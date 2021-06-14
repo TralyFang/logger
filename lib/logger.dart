@@ -12,6 +12,7 @@ export 'src/outputs/memory_output.dart';
 export 'src/outputs/multi_output.dart';
 
 export 'src/printers/pretty_printer.dart';
+export 'src/printers/oneline_printer.dart';
 export 'src/printers/logfmt_printer.dart';
 export 'src/printers/simple_printer.dart';
 export 'src/printers/hybrid_printer.dart';
