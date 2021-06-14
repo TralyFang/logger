@@ -87,7 +87,6 @@ class OneLinePrinter extends LogPrinter {
 
   /// [level] 日志等级
   /// [message] 日志内容
-  /// [error] 错误信息
   /// [lineInfo] 类名和方法名
   List<String> _formatAndPrint(
     Level level,
