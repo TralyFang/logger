@@ -10,12 +10,12 @@ import 'package:logger/src/log_printer.dart';
 
 class OneLinePrinter extends LogPrinter {
   static final levelEmojis = {
-    Level.verbose: 'V',
-    Level.debug: 'D',
-    Level.info: 'I',
-    Level.warning: 'W',
-    Level.error: 'E',
-    Level.wtf: 'F',
+    Level.verbose: '|V|',
+    Level.debug: '|D|',
+    Level.info: '|I|',
+    Level.warning: '|W|',
+    Level.error: '|E|',
+    Level.wtf: '|F|',
   };
 
   /// Matches a stacktrace line as generated on Android/iOS devices.
