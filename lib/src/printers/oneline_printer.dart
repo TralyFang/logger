@@ -7,9 +7,8 @@ import 'package:logger/src/log_printer.dart';
 /// 格式：日期 类名和方法名 级别 内容
 /// 例如：
 /// 2021-06-14 16:58:28.883515 _MyHomePageState.demo I Info message
-
 class OneLinePrinter extends LogPrinter {
-  static final levelEmojis = {
+  static final levelName = {
     Level.verbose: '|V|',
     Level.debug: '|D|',
     Level.info: '|I|',
@@ -116,10 +115,7 @@ class OneLinePrinter extends LogPrinter {
       }
     }
 
-    for (var line in message.split('\n')) {
-      buffer.add('${DateTime.now()} $lineInfo ${levelEmojis[level]} $line');
-    }
-
+    buffer.add('${DateTime.now()} $lineInfo ${levelName[level]} ${message.replaceAll('\n', ' ')}\n');
     return buffer;
   }
 }
