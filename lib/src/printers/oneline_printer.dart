@@ -22,24 +22,14 @@ class OneLinePrinter extends LogPrinter {
   /// #1      Logger.log (package:logger/src/logger.dart:115:29)
   static final _deviceStackTraceRegex = RegExp(r'#[0-9]+[\s]+(.+) \(([^\s]+)\)');
 
-  final int errorMethodCount;
-  final int lineLength;
-
-  OneLinePrinter({
-    this.errorMethodCount = 8,
-    this.lineLength = 120,
-  });
-
   @override
   List<String> log(LogEvent event) {
     var messageStr = stringifyMessage(event.message);
-    var errorStr = event.error?.toString();
     var lineInfo = _classAndMethod(StackTrace.current);
 
     return _formatAndPrint(
       event.level,
       messageStr,
-      errorStr,
       lineInfo,
     );
   }
@@ -102,19 +92,11 @@ class OneLinePrinter extends LogPrinter {
   List<String> _formatAndPrint(
     Level level,
     String message,
-    String? error,
     String? lineInfo,
   ) {
     // This code is non trivial and a type annotation here helps understanding.
     // ignore: omit_local_variable_types
     List<String> buffer = [];
-
-    if (error != null) {
-      for (var line in error.split('\n')) {
-        buffer.add(line);
-      }
-    }
-
     buffer.add('${DateTime.now()} $lineInfo ${levelName[level]} ${message.replaceAll('\n', ' ')}\n');
     return buffer;
   }
