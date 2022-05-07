@@ -25,7 +25,7 @@ class OneLinePrinter extends LogPrinter {
   @override
   List<String> log(LogEvent event) {
     var messageStr = stringifyMessage(event.message);
-    var lineInfo = _classAndMethod(StackTrace.current);
+    var lineInfo = classAndMethod(StackTrace.current);
 
     return _formatAndPrint(
       event.level,
@@ -35,7 +35,7 @@ class OneLinePrinter extends LogPrinter {
   }
 
   /// 从调用堆栈中找类名和方法名
-  String _classAndMethod(StackTrace? stackTrace) {
+  String classAndMethod(StackTrace? stackTrace) {
     var lines = stackTrace.toString().split('\n');
     var info = '';
     var count = 0;
