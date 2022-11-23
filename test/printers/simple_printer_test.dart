@@ -1,6 +1,6 @@
+import 'package:logger/src/logger.dart';
 import 'package:logger/src/printers/simple_printer.dart';
 import 'package:test/test.dart';
-import 'package:logger/logger.dart';
 
 const ansiEscapeLiteral = '\x1B';
 
@@ -86,6 +86,21 @@ void main() {
     expect(
       plainPrinter.log(withIterable)[0],
       '[D]  [1,2,3,4]  ERROR: some error',
+    );
+  });
+
+  test('deal with Function type message', () {
+    var expectedMessage = 'heavily computed Message';
+    var withFunction = LogEvent(
+      Level.debug,
+      () => expectedMessage,
+      'some error',
+      StackTrace.current,
+    );
+
+    expect(
+      plainPrinter.log(withFunction)[0],
+      '[D]  $expectedMessage  ERROR: some error',
     );
   });
 }
