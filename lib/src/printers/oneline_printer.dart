@@ -68,7 +68,7 @@ class OneLinePrinter extends LogPrinter {
     }
 
     var group = match.group(2)!;
-    return group.contains('log_util.dart') || group.startsWith('package:logger');
+    return group.contains('log_util.dart') || group.contains('_log.dart') || group.startsWith('package:logger');
   }
 
   // Handles any object that is causing JsonEncoder() problems
